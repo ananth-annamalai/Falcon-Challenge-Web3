@@ -1,0 +1,5 @@
+.vscode/settings.json
+upload_service/e2e/protractor.conf.js
+upload_service/e2e/tsconfig.json
+upload_service/e2e/src/app.e2e-spec.ts
+upload_service/e2e/src/app.po.ts
