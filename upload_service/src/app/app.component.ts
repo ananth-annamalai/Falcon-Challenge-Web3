@@ -1,22 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Movie } from './model/movie.mode';
 import { AuthService } from './service/auth.service';
+import { BackendService } from './service/backend.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'create-metamask';
 
   ethereum: any
   is_connected = false
   connectedAddress = ''
   eth_balance: number 
-  constructor(private authService: AuthService) {
+  all_movies: [Movie] 
+  constructor(private authService: AuthService,
+            private backendService: BackendService) {
     
   }
 
+  ngOnInit(): void {
+      this.backendService.getMovies().subscribe(
+        (result:[Movie]) => {
+          this.all_movies = result
+          console.log(this.all_movies)
+        }
+      )
+  }
   handleAccountsChanged(accounts) {
     console.log(accounts)
     if(accounts.length == 0){

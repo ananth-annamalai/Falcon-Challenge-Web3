@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { from } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import * as detectEthereumProvider from '@metamask/detect-provider';
+import detectEthereumProvider from '@metamask/detect-provider';
 @Injectable({
     providedIn: 'root',
   })

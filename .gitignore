@@ -3,3 +3,10 @@ upload_service/e2e/protractor.conf.js
 upload_service/e2e/tsconfig.json
 upload_service/e2e/src/app.e2e-spec.ts
 upload_service/e2e/src/app.po.ts
+movie-data/.idea/.gitignore
+movie-data/.idea/misc.xml
+movie-data/.idea/modules.xml
+movie-data/.idea/movie-data.iml
+movie-data/.idea/vcs.xml
+movie-data/.idea/inspectionProfiles/profiles_settings.xml
+backend/node_modules

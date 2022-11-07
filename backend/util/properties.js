@@ -1,0 +1,1 @@
+exports.mongoDBUrl = 'mongodb+srv://master:z4j2w2Eyy3LtF8NU@cluster0.1ti7g3o.mongodb.net/falcon_challenge_web3?retryWrites=true&w=majority'
