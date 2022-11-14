@@ -1,0 +1,135 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="100" id="navbar-top">
+  <div class="container">
+    <div class="navbar-translate">
+      <img alt="Peacock" sizes="10vw"
+        srcset="https://img.nbc.com/sites/nbcunbc/files/images/2020/7/06/peacock-logo-spine.png?impolicy=nbc_com&amp;imwidth=600&amp;imdensity=1 600w, https://img.nbc.com/sites/nbcunbc/files/images/2020/7/06/peacock-logo-spine.png?impolicy=nbc_com&amp;imwidth=480&amp;imdensity=1 480w, https://img.nbc.com/sites/nbcunbc/files/images/2020/7/06/peacock-logo-spine.png?impolicy=nbc_com&amp;imwidth=340&amp;imdensity=1 340w"
+        class="brand-logo__image">
+      <button aria-controls="navigation-index" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler"
+        [attr.aria-expanded]="!isCollapsed" (click)="isCollapsed = !isCollapsed" id="navigation" type="button">
+        <span class="navbar-toggler-bar bar1"> </span>
+        <span class="navbar-toggler-bar bar2"> </span>
+        <span class="navbar-toggler-bar bar3"> </span>
+      </button>
+    </div>
+    <div class="navbar-collapse justify-content-end" [collapse]="isCollapsed" id="navigation">
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-brand"><a> BLK• </a></div>
+          <div class="col-6 collapse-close text-right">
+            <button aria-controls="navigation-index" aria-label="Toggle navigation" class="navbar-toggler"
+              [attr.aria-expanded]="!isCollapsed" (click)="isCollapsed = !isCollapsed" id="navigation" type="button">
+              <i class="tim-icons icon-simple-remove"> </i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav" *ngIf="!isShowLogin">
+        <li class="nav-item dropdown" dropdown>
+          <a class="nav-link dropdown-toggle dropdown-toggle" data-toggle="dropdown" dropdownToggle
+            href="javascript:void(0)" id="navbarDropdownMenuLink">
+            <i aria-hidden="true" class="tim-icons icon-single-02"></i>
+            <span>
+              Account: {{connectedAddress}}
+            </span>
+          </a>
+          <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+            <div class="divider"></div>
+            <a class="dropdown-item" href="javascript:void(0)">
+              Eth Address: {{connectedAddress}}
+            </a>
+            <div class="divider"></div>
+            <a class="dropdown-item" href="javascript:void(0)">
+              Eth Balance: {{eth_balance}}
+            </a>
+          </div>
+        </li>
+        <img src="assets/img/metamask-fox-logo.svg">
+      </ul>
+      <ul class="navbar-nav" *ngIf="isShowLogin">
+        <li class="nav-item">
+          <a class="nav-link btn btn-default d-none d-lg-block" href="javascript:void(0)" (click)="openMetaMask()"
+            style="width: 130px;">
+            Login
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="wrapper">
+  <div class="page-header">
+    <img class="path" src="assets/img/blob.png" />
+
+    <img class="path2" src="assets/img/path2.png" />
+
+    <img class="shapes triangle" src="assets/img/triunghiuri.png" />
+
+    <img class="shapes wave" src="assets/img/waves.png" />
+
+    <img class="shapes squares" src="assets/img/patrat.png" />
+
+    <img class="shapes circle" src="assets/img/cercuri.png" />
+
+
+    <div style="padding-top: 150px !important;">
+      <div class="container">
+        <div class="title">
+          <!-- <h3 class="mb-3">Navigation Tabs</h3> -->
+        </div>
+        <div class="row">
+          <div class="col-md-10 col-xl-6 mr-auto">
+            <div class="mb-3">
+              <small class="text-uppercase font-weight-bold">
+                Search Title
+              </small>
+            </div>
+            <!-- <div class="card">
+              <div class="card-header" style="min-height: 150px;"> -->
+            <div class="mb-3">
+              <form class="example-form">
+                <mat-form-field style="width:-webkit-fill-available;" class="example-full-width" appearance="outline">
+                  <mat-label>Title</mat-label>
+                  <input type="text" [formControl]="myControl" placeholder="What are you looking for?" matInput
+                    [matAutocomplete]="auto">
+                  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
+                    (optionSelected)="onTitleSelection($event)">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                      {{option.title}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="container">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-lg-7 mb-7 mb-lg-0">
+            <h1 class="text-white font-weight-light">{{selectedTitle?.title}}</h1>
+            <p class="text-white mt-4">
+              {{selectedTitle?.overview}}
+            </p>
+            <div *ngIf="selectedTitle?.genres?.length > 0" style="display: flex;padding-top: 10px;">
+              <div *ngFor="let genre of selectedTitle.genres" style="padding-right: 5px;">
+                <span class="badge badge-info mr-1"> {{genre}} </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4" *ngIf="selectedTitle?.poster">
+            <carousel [showIndicators]="false">
+              <slide>
+                <img class="d-block w-100" [src]="selectedTitle?.poster" style="width: 280px !important;
+                height: 333.2px !important;" />
+              </slide>
+            </carousel>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
