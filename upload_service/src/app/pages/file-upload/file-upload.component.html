@@ -1,0 +1,22 @@
+<button class="btn mr-1" (click)="onClick($event)" [ngClass]="{'disabled': !(selectedTitle?._id?.length > 0)}">Choose</button>
+
+<input #fileUpload type="file" class="input_fileupload--hidden" (input)="onInput($event)"
+  (change)="onFileSelected($event)" [(ngModel)]="uploadedFileName" [accept]="">
+
+<table class="table">
+  <tbody>
+    <div *ngFor="let file of files">
+      <tr>
+        <td class="vertical-align-middle" style="width: 10vw;"><img class="d-block w-100" [src]="selectedTitle?.poster" width="70px !important"  /></td>
+        <td class="vertical-align-middle" style="width: 30vw;">{{selectedTitle?.title}}</td>
+        <!-- {{file.name}} -->
+        <td class="vertical-align-middle" style="width: 10vw;">{{formatBytes(file.size)}}</td>
+        <td class="td-actions text-right vertical-align-middle">
+          <button type="button" rel="tooltip" class="btn btn-danger btn-sm btn-icon" (click)="removeFile(file)">
+            <i class="tim-icons icon-simple-remove"></i>
+          </button>
+        </td>
+      </tr>
+    </div>
+  </tbody>
+</table>

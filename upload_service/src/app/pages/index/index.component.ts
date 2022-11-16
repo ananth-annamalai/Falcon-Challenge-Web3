@@ -32,6 +32,8 @@ export class IndexComponent implements OnInit, OnDestroy {
   myControl = new FormControl('');
   filteredOptions: Observable<Movie[]>;
   selectedTitle: Movie;
+  showLoader: boolean = true;
+  
   constructor(private authService: AuthService,
     private backendService: BackendService) {
 
@@ -63,8 +65,10 @@ export class IndexComponent implements OnInit, OnDestroy {
     this.selectedTitle = title.option.value;
   }
   loadMovies() {
+    this.showLoader = true;
     this.backendService.getMovies().subscribe(
       (result: [Movie]) => {
+        this.showLoader = false;
         this.all_movies = result
         console.log(this.all_movies)
       }

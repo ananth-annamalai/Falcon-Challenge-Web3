@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   ) { }
   @HostListener("window:scroll", ["$event"])
   onWindowScroll(e) {
-    if (window.pageYOffset > 100) {
+    if (window.pageYOffset > 60) {
       var element = document.getElementById("navbar-top");
       if (element) {
         element.classList.remove("navbar-transparent");
