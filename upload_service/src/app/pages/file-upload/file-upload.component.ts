@@ -16,7 +16,7 @@ export class FileuploadComponent {
     constructor(private sanitizer: DomSanitizer) {
     }
 
-    onClick(event) {
+    onfileUploadBtnClick(event) {
         if (this.fileUpload)
             this.fileUpload.nativeElement.click()
     }
@@ -39,7 +39,12 @@ export class FileuploadComponent {
             }
         }
     }
+    uploadFile() {
+        const formData = new FormData();
+        formData.append("titleId", this.selectedTitle._id);
+        formData.append("userfile", this.files[0]);
 
+    }
     removeFile(file) {
         let ix
         if (this.files && -1 !== (ix = this.files.indexOf(file))) {

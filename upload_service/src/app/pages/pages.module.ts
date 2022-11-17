@@ -43,6 +43,7 @@ import { IndexComponent } from "./index/index.component";
     ModalModule.forRoot(),
     MatAutocompleteModule,
     MatInputModule
+    
   ],
   declarations: [
     IndexComponent,
