@@ -32,6 +32,8 @@ export class IndexComponent implements OnInit, OnDestroy {
   myControl = new FormControl('');
   filteredOptions: Observable<Movie[]>;
   selectedTitle: Movie;
+  showLoader: boolean = true;
+  
   constructor(private authService: AuthService,
     private backendService: BackendService) {
 
@@ -63,8 +65,10 @@ export class IndexComponent implements OnInit, OnDestroy {
     this.selectedTitle = title.option.value;
   }
   loadMovies() {
+    this.showLoader = true;
     this.backendService.getMovies().subscribe(
       (result: [Movie]) => {
+        this.showLoader = false;
         this.all_movies = result
         console.log(this.all_movies)
       }
@@ -90,7 +94,7 @@ export class IndexComponent implements OnInit, OnDestroy {
         this.connectedAddress = await ethereum.request({ method: 'eth_requestAccounts' })
         const eth_balance_raw = await ethereum.request({ method: 'eth_getBalance', params: [this.connectedAddress[0], "latest"] })
         this.eth_balance = parseInt(eth_balance_raw.result, 16) / Math.pow(10, 18) | 0.0
-        this.is_connected = ethereum.connected
+        this.is_connected = true;
         this.isShowLogin = false;
         this.ethereum.on('accountsChanged', this.handleAccountsChanged);
       },
