@@ -17,9 +17,10 @@ def load_genres():
 
 def load_movies():
     load_genres()
-    for page in range(1, 51):
-        movies_response = requests.get(f'{API_URL}movie/popular?api_key={API_KEY}&page=1{page}').json()
+    for page in range(1, 25):
+        movies_response = requests.get(f'{API_URL}discover/movie?api_key={API_KEY}&with_companies=33&sort_by=popularity.desc&page={page}').json()
         for movie_response in (movies_response['results']):
+            #print(movie_response['title'])
             movie = {}
             movie['title_id'] = movie_response['id']
             movie['title'] = movie_response['title']
