@@ -8,9 +8,9 @@ exports.getAllMovies = (req, res) => {
         })
 }
 
-exports.saveMovie = (cid, movie_id) => {
+exports.saveMovie = (cid, title_id) => {
     saved_movie = savedMovie()
-    saved_movie.cid = cid
-    saved_movie.movie_id = movie_id
+    saved_movie.infuraUrl = 'https://web3-streaming.infura-ipfs.io/ipfs/' + cid
+    saved_movie.movie = title_id
     saved_movie.save()
 }

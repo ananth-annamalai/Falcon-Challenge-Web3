@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require("mongoose");
 const multer = require("multer");
+const fs = require('fs')
 
 const properties = require('./util/properties')
 const addFiletoIPFS = require('../backend/services/infura')
@@ -18,17 +19,16 @@ const upload = multer({ dest: "uploads/" });
 app.get('/movies', getAllMovies);
 
 app.post('/movie/upload', upload.single('movie'), async (req, res) => {
-    const movie_id = req.body.movie_id
-    const cid = await addFiletoIPFS(req.file)
-    console.log(cid)
-    saveMovie(cid, movie_id)
+    const title_id = req.body.title_id
+    const ipfs_res = await addFiletoIPFS(req.file)
+    saveMovie(ipfs_res.cid, title_id)
     fs.unlink(req.file.path, (err) => {
         if (err) {
             console.error(err)
             return
         }
     })
-    return res.status(200).json("Sucess")
+    return res.status(200).json({ ipfs_hash: ipfs_res.cid + '' })
 })
 
 mongoose.connect(properties.mongoDBUrl)

@@ -7,3 +7,7 @@ export interface Movie {
     release_dt : Date
     overview : string
 }
+
+export interface UploadResponse {
+    ipfs_hash: string
+}

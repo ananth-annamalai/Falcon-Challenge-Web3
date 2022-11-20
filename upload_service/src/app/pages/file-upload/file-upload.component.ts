@@ -1,6 +1,7 @@
 import { Component, Input, ViewChild, ElementRef } from "@angular/core";
 import { DomSanitizer } from '@angular/platform-browser';
-import { Movie } from "src/app/model/movie.mode";
+import { Movie, UploadResponse } from "src/app/model/movie.mode";
+import { BackendService } from "src/app/service/backend.service";
 
 @Component({
     selector: 'app-file-Upload',
@@ -12,8 +13,12 @@ export class FileuploadComponent {
     @Input() selectedTitle: Movie = null;
     uploadedFileName: string
     files: File[] = []
+    isHashAvail: boolean = false
+    ipfsHash = ''
+    isProgress = false
 
-    constructor(private sanitizer: DomSanitizer) {
+    constructor(private sanitizer: DomSanitizer,
+        private backendService: BackendService) {
     }
 
     onfileUploadBtnClick(event) {
@@ -27,7 +32,7 @@ export class FileuploadComponent {
 
     onFileSelected(event) {
         let files = event.dataTransfer ? event.dataTransfer.files : event.target.files;
-        console.log('event::::::', event)
+        //console.log('event::::::', event)
         for (let i = 0; i < files.length; i++) {
             let file = files[i];
             if (this.validate(file)) {
@@ -41,8 +46,19 @@ export class FileuploadComponent {
     }
     uploadFile() {
         const formData = new FormData();
-        formData.append("titleId", this.selectedTitle._id);
-        formData.append("userfile", this.files[0]);
+        const movie_file = this.files[0]
+        this.files = []
+        formData.append("title_id", this.selectedTitle._id);
+        formData.append("movie", movie_file);
+        this.isProgress = true
+        this.backendService.uploadMovie(formData).subscribe(
+            (res: UploadResponse) => {
+                //console.log(res)
+               this.isProgress = false
+               this.isHashAvail = true
+               this.ipfsHash = res.ipfs_hash
+            }
+        )
 
     }
     removeFile(file) {
