@@ -7,7 +7,7 @@ const fs = require('fs')
 
 const properties = require('./util/properties')
 const addFiletoIPFS = require('../backend/services/infura')
-const { getAllMovies, saveMovie } = require("../backend/services/db_service")
+const { getAllMovies, saveMovie, getSavedMovies } = require("../backend/services/db_service")
 
 const app = express();
 
@@ -17,6 +17,8 @@ app.use(cors())
 const upload = multer({ dest: "uploads/" });
 
 app.get('/movies', getAllMovies);
+
+app.get('/saved_movies', getSavedMovies);
 
 app.post('/movie/upload', upload.single('movie'), async (req, res) => {
     const title_id = req.body.title_id
