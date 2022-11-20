@@ -1,4 +1,5 @@
-<button class="btn mr-1" (click)="onfileUploadBtnClick($event)" [ngClass]="{'disabled': !(selectedTitle?._id?.length > 0)}">
+<button class="btn mr-1" (click)="onfileUploadBtnClick($event)"
+  [ngClass]="{'disabled': !(selectedTitle?._id?.length > 0)}">
   <i class="tim-icons icon-simple-add"></i>
   Choose</button>
 
@@ -24,6 +25,14 @@
             <i class="tim-icons icon-simple-remove"></i>
           </button>
         </td>
+      </tr>
+    </div>
+    <div *ngIf="isProgress">
+      <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+    </div>
+    <div *ngIf="isHashAvail">
+      <tr>
+        <td class="vertical-align-middle text-center">IPFS Hash: {{ipfsHash}}</td>
       </tr>
     </div>
   </tbody>

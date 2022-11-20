@@ -10,3 +10,4 @@ movie-data/.idea/movie-data.iml
 movie-data/.idea/vcs.xml
 movie-data/.idea/inspectionProfiles/profiles_settings.xml
 backend/node_modules
+backend/uploads

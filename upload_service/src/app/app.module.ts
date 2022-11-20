@@ -6,6 +6,7 @@ import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { PagesModule } from "./pages/pages.module";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     HttpClientModule,
     RouterModule,
     AppRoutingModule,
-    PagesModule
+    PagesModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
