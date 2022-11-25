@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg fixed-top bd-danger" color-on-scroll="100" id="navbar-top"
+  style="padding: 0.625rem 0.9375rem; background-color: #121433;">
+  <div class="container">
+    <div class="navbar-translate">
+      <img alt="Peacock" sizes="10vw"
+        srcset="https://img.nbc.com/sites/nbcunbc/files/images/2020/7/06/peacock-logo-spine.png?impolicy=nbc_com&amp;imwidth=600&amp;imdensity=1 600w, https://img.nbc.com/sites/nbcunbc/files/images/2020/7/06/peacock-logo-spine.png?impolicy=nbc_com&amp;imwidth=480&amp;imdensity=1 480w, https://img.nbc.com/sites/nbcunbc/files/images/2020/7/06/peacock-logo-spine.png?impolicy=nbc_com&amp;imwidth=340&amp;imdensity=1 340w"
+        class="brand-logo__image">
+      <button aria-controls="navigation-index" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler"
+        [attr.aria-expanded]="!isCollapsed" (click)="isCollapsed = !isCollapsed" id="navigation" type="button">
+        <span class="navbar-toggler-bar bar1"> </span>
+        <span class="navbar-toggler-bar bar2"> </span>
+        <span class="navbar-toggler-bar bar3"> </span>
+      </button>
+    </div>
+    <div class="navbar-collapse justify-content-end" id="navigation">
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-brand"><a> </a></div>
+          <div class="col-6 collapse-close text-right">
+            <button aria-controls="navigation-index" aria-label="Toggle navigation" class="navbar-toggler"
+              [attr.aria-expanded]="!isCollapsed" (click)="isCollapsed = !isCollapsed" id="navigation" type="button">
+              <i class="tim-icons icon-simple-remove"> </i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav" *ngIf="!isShowLogin" #navbarEle>
+        <li class="nav-item dropdown" dropdown>
+          <span>
+            <a class="acc-info active" style="display: grid;
+              width: 180px;
+              height: 50px;" (click)="menuElement.toggle($event)">
+              <div class="row">
+                <div class="col-md-2 col-xl-2" style="padding: 12px 0px 0px 30px !important;"><i aria-hidden="true"
+                    class="tim-icons icon-single-02"></i></div>
+                <div class="col-md-10 col-xl-8" style="text-align: center;margin-top: 3px;">
+                  <span>Account 1 </span>
+                  <span>{{connectedAddressDisplay}}</span>
+                </div>
+                <i class="pi pi-angle-down" style="padding-top: 16px;margin-left: -10px;"></i>
+              </div>
+            </a>
+            <p-menu #menuElement [popup]="true" [model]="items" [appendTo]="navbarEle" styleClass="width-auto"></p-menu>
+          </span>
+        </li>
+        <img src="assets/img/metamask-fox-logo.svg">
+      </ul>
+      <ul class="navbar-nav" *ngIf="isShowLogin">
+        <li class="nav-item">
+          <a class="nav-link btn btn-default d-none d-lg-block" href="javascript:void(0)" (click)="openMetaMask()"
+            style="width: 220px;">
+            Connect to MetaMask
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="wrapper">
+  <div class="page-header" style="padding-bottom: 150px;">
+    <img class="path" src="assets/img/blob.png" />
+
+    <img class="path2" src="assets/img/path2.png" />
+
+    <img class="shapes triangle" src="assets/img/triunghiuri.png" />
+
+    <img class="shapes wave" src="assets/img/waves.png" />
+
+    <img class="shapes squares" src="assets/img/patrat.png" />
+
+    <img class="shapes circle" src="assets/img/cercuri.png" />
+
+
+    <router-outlet></router-outlet>
+
+  </div>
+</div>

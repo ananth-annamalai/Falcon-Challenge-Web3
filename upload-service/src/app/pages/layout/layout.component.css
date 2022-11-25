@@ -1,0 +1,28 @@
+.acc-info.active {
+    border-color: #fd5d93 !important;
+    color: #fd5d93 !important;
+}
+
+.acc-info.active {
+    border: 1px solid #fff; 
+     border-radius: 85px; 
+}
+.acc-info {
+    color: #fff;
+    margin: 0 5px 0 0;
+    background-color: transparent;
+    border-radius: 30px;
+    padding: 0px 0px;
+    line-height: 1.5;
+}
+.width-auto{
+    width: auto;
+}
+
+:host ::ng-deep .p-menu.p-menu-overlay {
+    background: #121433 !important;
+}
+
+:host ::ng-deep .p-menu .p-submenu-header {
+    background: inherit !important;
+}
