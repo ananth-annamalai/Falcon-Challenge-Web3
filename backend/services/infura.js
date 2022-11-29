@@ -2,8 +2,8 @@ const ipfsClient = require('ipfs-http-client');
 var fs = require('fs')
 
 
-const projectId = '2HGTHH5UG9LL4ONMzilI8asRV5N';
-const projectSecret = '18cb709ef5f39e133fa832af932907af';
+const projectId = process.env.INFURA_PROJECT_ID
+const projectSecret = process.env.INFURA_PROJECT_SECRET
 const auth =
     'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
 

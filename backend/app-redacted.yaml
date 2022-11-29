@@ -1,0 +1,7 @@
+runtime: nodejs16
+service: api
+
+env_variables:
+  INFURA_PROJECT_ID: 'XXXXXXX'
+  INFURA_PROJECT_SECRET: 'XXXXXXX'
+  MONGO_DB_URI: 'XXXXXXXXXX'
