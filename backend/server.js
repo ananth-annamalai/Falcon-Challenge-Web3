@@ -4,18 +4,22 @@ const cors = require('cors');
 const mongoose = require("mongoose");
 const multer = require("multer");
 const fs = require('fs')
+const dotenv = require('dotenv')
 
-const properties = require('./util/properties')
-const addFiletoIPFS = require('../backend/services/infura')
-const { getAllMovies, saveMovie, getSavedMovies } = require("../backend/services/db_service")
+//const properties = require('./util/properties')
+const addFiletoIPFS = require('./services/infura')
+const { getAllMovies, saveMovie, getSavedMovies } = require("./services/db_service")
 
 const app = express();
-
+dotenv.config()
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors())
-const upload = multer({ dest: "uploads/" });
+const upload = multer({ dest: "/tmp/" });
 
+app.get('/', (req, res) => {
+    return res.status(200).json({ message: 'server is running' })
+})
 app.get('/movies', getAllMovies);
 
 app.get('/saved_movies', getSavedMovies);
@@ -33,9 +37,10 @@ app.post('/movie/upload', upload.single('movie'), async (req, res) => {
     return res.status(200).json({ ipfs_hash: ipfs_res.cid + '' })
 })
 
-mongoose.connect(properties.mongoDBUrl)
+const port = process.env.PORT || 3001
+mongoose.connect(process.env.MONGO_DB_URI)
     .then(() => {
-        app.listen(3001, () => {
+        app.listen(port, () => {
             console.log('listening on port 3001');
         });
     })

@@ -1,5 +1,5 @@
-const movies = require('../../backend/models/movies')
-const savedMovie = require('../../backend/models/saved_movies')
+const movies = require('../models/movies')
+const savedMovie = require('../models/saved_movies')
 
 exports.getAllMovies = async (req, res) => {
     const result = await movies.find()

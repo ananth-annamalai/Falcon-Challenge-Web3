@@ -82,7 +82,7 @@ export class LayoutComponent implements OnInit, AfterViewInit {
         label: 'Stream Service',
         icon: 'pi pi-external-link',
         command: () => {
-          var streamUrl = window.location.origin + "/" + "stream";
+          var streamUrl = window.location.origin + "/#/" + "stream";
           window.open(streamUrl, "app_stream_page");
         }
       }

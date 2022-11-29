@@ -7,6 +7,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { PagesModule } from "./pages/pages.module";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     PagesModule,
     MatProgressBarModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{provide : LocationStrategy , useClass: HashLocationStrategy}],
+  bootstrap: [AppComponent,]
 })
 export class AppModule { }

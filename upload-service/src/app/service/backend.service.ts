@@ -11,9 +11,9 @@ import { SavedMovie } from '../model/saved-movie.model';
 export class BackendService {
     is_metamask_connectedSubject : Subject<boolean> = new Subject<boolean>();
     is_metamask_connectedSubject$ : Observable<boolean>;
-    private movies_url = 'http://localhost:3001/movies'
-    private upload_url = 'http://localhost:3001/movie/upload/'
-    private saved_movies_url = 'http://localhost:3001/saved_movies'
+    private movies_url = 'https://api-dot-decentralized-peacock.el.r.appspot.com/movies'
+    private upload_url = 'https://api-dot-decentralized-peacock.el.r.appspot.com/movie/upload/'
+    private saved_movies_url = 'https://api-dot-decentralized-peacock.el.r.appspot.com/saved_movies'
 
     constructor(private http: HttpClient) { 
     this.is_metamask_connectedSubject$ = this.is_metamask_connectedSubject.asObservable();    
